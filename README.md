@@ -1,29 +1,31 @@
 # Weekly
 
-2022 Nov 28
-This Week in Neovim #20 OK
-2022 Nov 21
-This Week in Neovim #19 OK
-2022 Nov 14
-This Week in Neovim #18 OK
-2022 Nov 07
-This Week in Neovim #17 OK
-2022 Oct 31
-This Week in Neovim #16 OK
-2022 Oct 24
-This Week in Neovim #15 OK
-2022 Oct 17
-This Week in Neovim #14 OK
-2022 Oct 10
-This Week in Neovim #13 OK
-2022 Oct 03
-This Week in Neovim #12 OK
-2022 Sep 26
-This Week in Neovim #11 OK
-2022 Sep 19
-This Week in Neovim #10 OK
-2022 Sep 12
-This Week in Neovim #9 OK
+```sh
+2023/1/2 OK (ADD 'roobert/search-replace.nvim')
+2023/1/9 OK (NO)
+2023/1/16 OK (NO)
+2023/1/23 OK (NO)
+2023/1/30 OK (NO)
+2023/2/6 OK (NO)
+2023/2/13 OK (NO)
+2023/2/20 OK (NO)
+2023/2/27 OK (NO)
+2023/3/6 OK (NO)
+2023/3/14 OK (NO)
+2023/3/20 OK (NO)
+2023/3/27 OK (NO)
+2023/4/3 OK (ADD 'JellyApple102/flote.nvim')
+2023/4/10 OK (NO)
+2023/4/17 OK (ADD 'jackMort/ChatGPT.nvim')
+2023/5/8 OK (NO)
+2023/5/15 OK (NO)
+2023/5/23 OK (NO)
+2023/5/29 OK (NO)
+2023/6/7 OK (NO)
+2023/6/12 OK (NO)
+2023/7/10 OK (NO)
+2023/7/16 OK (NO)
+```
 
 # coc extension site
 
@@ -40,7 +42,8 @@ chmod +x /usr/local/bin/nvim
 # node.js install
 
 ```sh
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+see [ https://github.com/nvm-sh/nvm ]
+
 source~/.zshrc
 nvm list-remote
 ```

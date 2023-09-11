@@ -14,11 +14,11 @@ lang['fatih/vim-go'] = {
 -- @func: 运行代码片段
 -- @keymap: unknow
 -- @status: false
-lang['michaelb/sniprun'] = {
-    opt = false,
-    run = 'bash ./install.sh',
-    config = conf.lang_sniprun
-}
+-- lang['michaelb/sniprun'] = {
+--     opt = false,
+--     run = 'bash ./install.sh',
+--     config = conf.lang_sniprun
+-- }
 lang["mfussenegger/nvim-dap"] = {
 	opt = true,
 	cmd = {
@@ -52,4 +52,21 @@ lang['luzhlon/xmake.vim'] = {
         {'luzhlon/qrun.vim'},
     },
 }
+
+-- @func: xmake entension
+-- @keymap: nil
+-- @status: true ---------- all done
+lang['antiagainst/vim-tablegen'] = {
+    opt = true,
+    ft = 'td',
+}
+
+-- @func: xmake entension
+-- @keymap: nil
+-- @status: true ---------- all done
+lang['hunterzju/mlir-vim'] = {
+    opt = true,
+    ft = 'mlir',
+}
+
 return lang

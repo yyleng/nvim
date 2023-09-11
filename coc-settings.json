@@ -180,6 +180,10 @@
   "diagnostic.refreshOnInsertMode": true,
 
   //########## links config ##########
-  "links.tooltip": true
+  "links.tooltip": true,
+  "Lua.diagnostics.globals": ["vim"],
+  "Lua.workspace.library": [
+    "/home/aico/.local/share/nvim/site/pack/packer/start/nui.nvim/lua"
+  ]
 }
 //========================== end ==========================

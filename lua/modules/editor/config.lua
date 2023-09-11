@@ -3,59 +3,66 @@ local dap_dir = vim.fn.stdpath("data") .. "/dapinstall/"
 local sessions_dir = vim.fn.stdpath("data") .. "/sessions/"
 
 function config.vim_cursorwod()
-    vim.api.nvim_command("augroup user_plugin_cursorword")
-    vim.api.nvim_command("autocmd!")
-    vim.api.nvim_command(
-        "autocmd FileType NvimTree,dashboard let b:cursorword = 0")
-    vim.api.nvim_command(
-        "autocmd WinEnter * if &diff || &pvw | let b:cursorword = 0 | endif")
-    vim.api.nvim_command("autocmd InsertEnter * let b:cursorword = 0")
-    vim.api.nvim_command("autocmd InsertLeave * let b:cursorword = 1")
-    vim.api.nvim_command("augroup END")
+	vim.api.nvim_command("augroup user_plugin_cursorword")
+	vim.api.nvim_command("autocmd!")
+	vim.api.nvim_command("autocmd FileType NvimTree,dashboard let b:cursorword = 0")
+	vim.api.nvim_command("autocmd WinEnter * if &diff || &pvw | let b:cursorword = 0 | endif")
+	vim.api.nvim_command("autocmd InsertEnter * let b:cursorword = 0")
+	vim.api.nvim_command("autocmd InsertLeave * let b:cursorword = 1")
+	vim.api.nvim_command("augroup END")
 end
 
 function config.nvim_treesitter()
-    vim.api.nvim_command("set foldmethod=expr")
-    vim.api.nvim_command("set foldexpr=nvim_treesitter#foldexpr()")
+	vim.api.nvim_command("set foldmethod=expr")
+	vim.api.nvim_command("set foldexpr=nvim_treesitter#foldexpr()")
 
-    require "nvim-treesitter.configs".setup {
-        ensure_installed = "all",
-        highlight = { enable = true, disable = { "vim" } },
-        -- label 2
-        -- rainbow = {
-        --   enable = true,
-        --   extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-        --   max_file_lines = 1000 -- Do not enable for files with more than 1000 lines, int
-        --},
-        -- label 3
-        -- context_commentstring = { enable = true, enable_autocmd = false },
-        -- label 4
-        matchup = { enable = true },
-    }
+	require("nvim-treesitter.configs").setup({
+		ensure_installed = "all",
+		highlight = { enable = true, disable = { "vim" } },
+		-- label 2
+		-- rainbow = {
+		--   enable = true,
+		--   extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+		--   max_file_lines = 1000 -- Do not enable for files with more than 1000 lines, int
+		--},
+		-- label 3
+		-- context_commentstring = { enable = true, enable_autocmd = false },
+		-- label 4
+		matchup = { enable = true },
+	})
 end
 
 function config.matchup()
-    vim.cmd [[let g:matchup_matchparen_offscreen = {'method': 'popup'}]]
+	vim.cmd([[let g:matchup_matchparen_offscreen = {'method': 'popup'}]])
 end
 
-function config.nvim_colorizer() require("colorizer").setup() end
+function config.nvim_colorizer()
+	require("colorizer").setup()
+end
 
 function config.neoscroll()
-    require("neoscroll").setup({
-        -- All these keys will be mapped to their corresponding default scrolling animation
-        mappings = {
-            "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz",
-            "zb"
-        },
-        hide_cursor = true, -- Hide cursor while scrolling
-        stop_eof = true, -- Stop at <EOF> when scrolling downwards
-        use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
-        respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-        easing_function = nil, -- Default easing function
-        pre_hook = nil, -- Function to run before the scrolling animation starts
-        post_hook = nil -- Function to run after the scrolling animation ends
-    })
+	require("neoscroll").setup({
+		-- All these keys will be mapped to their corresponding default scrolling animation
+		mappings = {
+			"<C-u>",
+			"<C-d>",
+			"<C-b>",
+			"<C-f>",
+			"<C-y>",
+			"<C-e>",
+			"zt",
+			"zz",
+			"zb",
+		},
+		hide_cursor = true, -- Hide cursor while scrolling
+		stop_eof = true, -- Stop at <EOF> when scrolling downwards
+		use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+		respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+		cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+		easing_function = nil, -- Default easing function
+		pre_hook = nil, -- Function to run before the scrolling animation starts
+		post_hook = nil, -- Function to run after the scrolling animation ends
+	})
 end
 
 -- @deprecated
@@ -74,27 +81,27 @@ end
 -- end
 
 function config.toggleterm()
-    require("toggleterm").setup {
-        -- size can be a number or function which is passed the current terminal
-        size = function(term)
-            if term.direction == "horizontal" then
-                return 15
-            elseif term.direction == "vertical" then
-                return vim.o.columns * 0.40
-            end
-        end,
-        open_mapping = [[<F12>]],
-        hide_numbers = true, -- hide the number column in toggleterm buffers
-        shade_filetypes = {},
-        shade_terminals = false,
-        shading_factor = "1", -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
-        start_in_insert = true,
-        insert_mappings = true, -- whether or not the open mapping applies in insert mode
-        persist_size = true,
-        direction = "float",
-        close_on_exit = true, -- close the terminal window when the process exits
-        shell = vim.o.shell -- change the default shell
-    }
+	require("toggleterm").setup({
+		-- size can be a number or function which is passed the current terminal
+		size = function(term)
+			if term.direction == "horizontal" then
+				return 15
+			elseif term.direction == "vertical" then
+				return vim.o.columns * 0.40
+			end
+		end,
+		open_mapping = [[<F12>]],
+		hide_numbers = true, -- hide the number column in toggleterm buffers
+		shade_filetypes = {},
+		shade_terminals = false,
+		shading_factor = "1", -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
+		start_in_insert = true,
+		insert_mappings = true, -- whether or not the open mapping applies in insert mode
+		persist_size = true,
+		direction = "float",
+		close_on_exit = true, -- close the terminal window when the process exits
+		shell = vim.o.shell, -- change the default shell
+	})
 end
 
 -- function config.dapui()
@@ -226,75 +233,81 @@ end
 
 -- ###################################### markdown helper ######################################
 function config.autolist()
-    local autolist_config = {
-        enabled = true,
-        list_cap = 50,
-        colon = {
-            indent_raw = true,
-            indent = true,
-            preferred = "-"
-        },
-        invert = {
-            indent = false,
-            toggles_checkbox = true,
-            ul_marker = "-",
-            ol_incrementable = "1",
-            ol_delim = ".",
-        },
-        lists = {
-            preloaded = {
-                generic = {
-                    "unordered",
-                    "digit",
-                    "ascii",
-                },
-                latex = {
-                    "latex_item",
-                },
-            },
-            filetypes = {
-                generic = {
-                    "markdown",
-                    "text",
-                },
-                latex = {
-                    "tex",
-                    "plaintex",
-                },
-            },
-        },
-        recal_function_hooks = {
-            "invert",
-            "new",
-        },
-        checkbox = {
-            left = "%[",
-            right = "%]",
-            fill = "x",
-        },
-        insert_mappings = {
-            invert = { "<c-r>+[catch]" },
-            new = { "<CR>" },
-            tab = { "<c-t>" },
-            detab = { "<c-d>" },
-            recal = { "<c-z>" },
-            indent = {
-                "<tab>+[catch]('>>')",
-                "<s-tab>+[catch]('<<')",
-            },
-        },
-        normal_mappings = {
-            new = {
-                "o",
-                "O+(true)",
-            },
-            tab = { ">>" },
-            detab = { "<<" },
-            recal = { "dd" },
-        },
-    }
-    require('autolist').setup(autolist_config)
+	local autolist_config = {
+		enabled = true,
+		list_cap = 50,
+		colon = {
+			indent_raw = true,
+			indent = true,
+			preferred = "-",
+		},
+		invert = {
+			indent = false,
+			toggles_checkbox = true,
+			ul_marker = "-",
+			ol_incrementable = "1",
+			ol_delim = ".",
+		},
+		lists = {
+			preloaded = {
+				generic = {
+					"unordered",
+					"digit",
+					"ascii",
+				},
+				latex = {
+					"latex_item",
+				},
+			},
+			filetypes = {
+				generic = {
+					"markdown",
+					"text",
+				},
+				latex = {
+					"tex",
+					"plaintex",
+				},
+			},
+		},
+		recal_function_hooks = {
+			"invert",
+			"new",
+		},
+		checkbox = {
+			left = "%[",
+			right = "%]",
+			fill = "x",
+		},
+		insert_mappings = {
+			invert = { "<c-r>+[catch]" },
+			new = { "<CR>" },
+			tab = { "<c-t>" },
+			detab = { "<c-d>" },
+			recal = { "<c-z>" },
+			indent = {
+				"<tab>+[catch]('>>')",
+				"<s-tab>+[catch]('<<')",
+			},
+		},
+		normal_mappings = {
+			new = {
+				"o",
+				"O+(true)",
+			},
+			tab = { ">>" },
+			detab = { "<<" },
+			recal = { "dd" },
+		},
+	}
+	require("autolist").setup(autolist_config)
 end
 -- ###################################### end ######################################
+function config.Trans()
+	require("Trans").setup({})
+	vim.keymap.set("n", "mi", "<Cmd>TranslateInput<CR>")
+	vim.keymap.set({ "n", "x" }, "mm", "<Cmd>Translate<CR>")
+	vim.keymap.set({ "n", "x" }, "mk", "<Cmd>TransPlay<CR>") -- 自动发音选中或者光标下的单词
+end
 
 return config

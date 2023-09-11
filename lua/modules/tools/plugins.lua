@@ -86,22 +86,6 @@ tools["andrewferrier/debugprint.nvim"] = {
     config = conf.debugprint,
 }
 
-
--- @func: ascii image in nvim terminal
--- @keymap: nil
--- @status: true ---------- all done
--- @Manually: 需要手动安装 ascii-image-converter 并置于 $PATH
-tools["samodostal/image.nvim"] = {
-    opt = false,
-    requires = {
-        {
-            "nvim-lua/plenary.nvim",
-            opt = false,
-        },
-    },
-    config = conf.image,
-}
-
 -- @func: emoji input
 -- @keymap: 'i | <A-m>'
 -- @status: true ---------- all done
@@ -114,42 +98,8 @@ tools["WilsonOh/emoji_picker-nvim"] = {
     end,
 }
 
--- @func: command line pro
--- @keymap: : | ? | /
--- @status: true ---------- all done
--- @Deprecated: delete this can fix rename bug
--- tools["folke/noice.nvim"] = {
---     opt = true,
---     event = "VimEnter",
---     config = function()
---         require("noice").setup({
---             cmdline = {
---                 view = "cmdline",
---             },
---         })
---     end,
---     requires = {
---         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
---         { "MunifTanjim/nui.nvim" },
---         -- OPTIONAL:
---         --   `nvim-notify` is only needed, if you want to use the notification view.
---         --   If not available, we use `mini` as the fallback
---         { "rcarriga/nvim-notify"
---             , opt = true
---             , module = "notify"
---             , config = function()
---                 require("notify").setup({
---                     stages = "fade_in_slide_out",
---                     top_down = false;
---                     background_colour = "#000000",
---                 })
---             end
---         },
---     }
--- }
-
 -- @func: show json path in statusline
--- @keymap: nil
+-- @keymap: y<C-p>
 -- @status: true ---------- all done
 tools["phelipetls/jsonpath.nvim"] = {
     opt = true,
@@ -173,42 +123,27 @@ tools["almo7aya/openingh.nvim"] = {
     opt = false,
 }
 
--- @func: project manager
--- @keymap: :Ide*
--- @status: true ---------- TODO
--- tools["Dax89/IDE.nvim"] = {
---     opt = false,
---     requires = {
---        {"nvim-lua/plenary.nvim"},
---        {"rcarriga/nvim-notify"},   -- Notifications Popup (Optional)
---        {"stevearc/dressing.nvim"}, -- Improved UI (Optional)
---        {"mfussenegger/nvim-dap"} , -- DAP Support (Optional)
---        {"rcarriga/nvim-dap-ui"},   -- DAP-UI Support (Optional)
---     },
---     -- config = conf.ide,
--- }
-
 -- @func: color picker
 -- @keymap: :CccPick ( hjkl | i | o | a | q | g | w(W) | b(B) | d | s | H | M | L | 1-9)
 -- @status: true ---------- all done
-tools["uga-rosa/ccc.nvim"] = {
-    opt = false,
-    config = function()
-        require("ccc").setup()
-    end,
-}
+-- tools["uga-rosa/ccc.nvim"] = {
+--     opt = false,
+--     config = function()
+--         require("ccc").setup()
+--     end,
+-- }
 
 -- @func: show nvim register and interactive with it
 -- @keymap: "r -> open register | "p("P) -> open register and paste
 -- @status: true ---------- all done
-tools["gennaro-tedesco/nvim-peekup"] = {
-    opt = false,
-    config = function()
-        vim.api.nvim_exec(
-            [[source ~/.config/nvim/lua/modules/tools/register.vim]],
-            false)
-    end
-}
+-- tools["gennaro-tedesco/nvim-peekup"] = {
+--     opt = false,
+--     config = function()
+--         vim.api.nvim_exec(
+--             [[source ~/.config/nvim/lua/modules/tools/register.vim]],
+--             false)
+--     end
+-- }
 
 -- @func: show nvim buffer and interactive with it
 -- @keymap: <leader>b
@@ -246,14 +181,155 @@ tools["narutoxy/silicon.lua"] = {
 -- @func: read text more friendly
 -- @keymap: :FSRead | :FSToggle | :FSClear
 -- @status: true ---------- all done
-tools["nullchilly/fsread.nvim"] = {
+-- tools["nullchilly/fsread.nvim"] = {
+--     opt = false,
+--     config = conf.fsread,
+-- }
+
+-- @func: global note for myself
+-- @keymap:
+-- @status: true ---------- all done
+-- tools["JellyApple102/flote.nvim"] = {
+--     opt = false,
+--     config = conf.flote,
+-- }
+
+-- @func: chatgpt
+-- @keymap:
+-- @status: true ---------- all done
+-- tools["jackMort/ChatGPT.nvim"] = {
+--     opt = false,
+--     requires = {
+--         "MunifTanjim/nui.nvim",
+--         "nvim-lua/plenary.nvim",
+--         "nvim-telescope/telescope.nvim"
+--     },
+--     config = conf.chatgpt
+-- }
+
+-- @func: neoai
+-- @keymap:
+-- @status: true ---------- all done
+-- tools["Bryley/neoai.nvim"] = {
+--     opt = false,
+--     requires = {
+--         "MunifTanjim/nui.nvim",
+--     },
+--     cmd = {
+--         "NeoAI",
+--         "NeoAIOpen",
+--         "NeoAIClose",
+--         "NeoAIToggle",
+--         "NeoAIContext",
+--         "NeoAIContextOpen",
+--         "NeoAIContextClose",
+--         "NeoAIInject",
+--         "NeoAIInjectCode",
+--         "NeoAIInjectContext",
+--         "NeoAIInjectContextCode",
+--     },
+--     config = function()
+--         require("neoai").setup({
+--             -- Below are the default options, feel free to override what you would like changed
+--             ui = {
+--                 output_popup_text = "NeoAI",
+--                 input_popup_text = "Prompt",
+--                 width = 34,               -- As percentage eg. 30%
+--                 output_popup_height = 80, -- As percentage eg. 80%
+--                 submit = "<Enter>",       -- Key binding to submit the prompt
+--             },
+--             models = {
+--                 {
+--                     name = "openai",
+--                     model = "gpt-3.5-turbo",
+--                     params = nil,
+--                 },
+--             },
+--             -- :put g | :put c
+--             register_output = {
+--                 ["g"] = function(output)
+--                     return output
+--                 end,
+--                 ["c"] = require("neoai.utils").extract_code_snippets,
+--             },
+--             inject = {
+--                 cutoff_width = 75,
+--             },
+--             prompts = {
+--                 context_prompt = function(context)
+--                     return "Hey, I'd like to provide some context for future "
+--                         .. "messages. Here is the code/text that I want to refer "
+--                         .. "to in our upcoming conversations:\n\n"
+--                         .. context
+--                 end,
+--             },
+--             mappings = {
+--                 ["select_up"] = "<C-k>",
+--                 ["select_down"] = "<C-j>",
+--             },
+--             open_ai = {
+--                 api_key = {
+--                     env = "OPENAI_API_KEY",
+--                     value = nil,
+--                     -- `get` is is a function that retrieves an API key, can be used to override the default method.
+--                     -- get = function() ... end
+--
+--                     -- Here is some code for a function that retrieves an API key. You can use it with
+--                     -- the Linux 'pass' application.
+--                     -- get = function()
+--                     --     local key = vim.fn.system("pass show openai/mytestkey")
+--                     --     key = string.gsub(key, "\n", "")
+--                     --     return key
+--                     -- end,
+--                 },
+--             },
+--             shortcuts = {
+--                 {
+--                     name = "textify",
+--                     key = "<leader>as",
+--                     desc = "fix text with AI",
+--                     use_context = true,
+--                     prompt = [[
+--                 Please rewrite the text to make it more readable, clear,
+--                 concise, and fix any grammatical, punctuation, or spelling
+--                 errors
+--             ]],
+--                     modes = { "v" },
+--                     strip_function = nil,
+--                 },
+--                 {
+--                     name = "gitcommit",
+--                     key = "<leader>ac",
+--                     desc = "generate git commit message",
+--                     use_context = false,
+--                     prompt = function()
+--                         return [[
+--                     Using the following git diff generate a consise and
+--                     clear git commit message, with a short title summary
+--                     that is 75 characters or less:
+--                 ]] .. vim.fn.system("git diff --cached")
+--                     end,
+--                     modes = { "n" },
+--                     strip_function = nil,
+--                 },
+--             },
+--         })
+--     end
+-- }
+
+-- @func: leetcode
+-- @keymap:
+-- @status: true ---------- all done
+tools["kawre/leetcode.nvim"] = {
     opt = false,
-    config = function()
-        vim.g.flow_strength = 0.7 -- low: 0.3, middle: 0.5, high: 0.7 (default)
-        vim.g.skip_flow_default_hl = true -- If you want to override default highlights
-        vim.api.nvim_set_hl(0, "FSPrefix", { fg = "#ff8700" })
-        vim.api.nvim_set_hl(0, "FSSuffix", { fg = "#98f6ff" })
-    end
+    run = ":TSUpdate html",
+    requires = {
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-telescope/telescope.nvim",
+        "nvim-lua/plenary.nvim", -- required by telescope
+        "MunifTanjim/nui.nvim",
+    },
+    config = conf.leetcode
 }
 
 return tools

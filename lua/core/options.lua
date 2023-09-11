@@ -51,8 +51,8 @@ local function load_options()
         ignorecase = true,
         smartcase = true,
         infercase = true,
-        incsearch = true,
-        wrapscan = true,
+        incsearch = true, -- enables the display of the matches while you are still typing your search.
+        wrapscan = true, -- disable stops the search at the end of the file.
         complete = ".,w,b,k",
         inccommand = "nosplit",
         grepformat = "%f:%l:%c:%m",
@@ -114,7 +114,8 @@ local function load_options()
         foldenable = true,
         signcolumn = "yes",
         conceallevel = 0,
-        concealcursor = "niv"
+        concealcursor = "niv",
+        matchpairs = "(:),{:},[:],<:>"
     }
 
     if global.is_mac then
