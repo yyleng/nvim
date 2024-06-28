@@ -1,4 +1,5 @@
 local completion = {}
+local conf = require("modules.completion.config")
 
 completion["neoclide/coc.nvim"] = {
     opt = true,
@@ -21,6 +22,16 @@ completion["github/copilot.vim"] = {
             [[source ~/.config/nvim/lua/modules/completion/copilot.vim]],
             false)
     end
+}
+
+completion["CopilotC-Nvim/CopilotChat.nvim"] = {
+    opt = false,
+    requires = {
+        "github/copilot.vim",
+        "nvim-lua/plenary.nvim",
+    },
+    branch = "canary",
+	config = conf.copilot_chat,
 }
 
 return completion
