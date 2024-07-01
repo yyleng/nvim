@@ -36,6 +36,11 @@ function config.copilot_chat()
 
             -- default prompts
             prompts = {
+                Trans = {
+                    prompt = 'Translate to chinese or english.',
+                    description = 'translate.',
+                    selection = require('CopilotChat.select').visual,
+                },
                 Complete = {
                     prompt = 'Use Chinese To Answer. Please help me complete the code.',
                     description = 'Complete the code.',
